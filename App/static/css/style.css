@@ -17,3 +17,42 @@ body {
 .push {
     height: 50px;
 }
+
+/* CUSTOM PAGINATION */
+
+.page-item.active .page-link {
+
+    columns: #fff;
+    background-color: #6c757d;
+    border: 1px solid #6c757d;
+}
+
+.pagination > li > a {
+    background-color:  #fff;
+    color: #6c757d;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > span > a:focus,
+.pagination > span > a:hover {
+    color: #111;
+    caret-color: transparent;
+    background-color:  #d3d3d3;
+    border: 1px solid #6c757d;
+    box-shadow: none;
+}
+
+/* DATATABLES */
+.dataTables_paginate {
+    margin-top: 10px !important;
+}
+
+.dataTables_filter {
+    display: none;
+}
+
+.dataTables_length {
+    margin-bottom: 10px !important;
+}
+
