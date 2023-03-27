@@ -24,6 +24,7 @@
                 <th>street</th>
                 <th>dist</th>
                 <th>date_update</th>
+                <th>Edit</th>
             </tr>
         </thead>
         <!-- Data from backend -->
@@ -37,7 +38,12 @@
                 <th>{{ location.district_id }}</th>
                 <th>{{ location.street }}</th>
                 <th>{{ location.dist }}</th>
-                <th>{{ location.get_date_update }}</th>
+                <th>{{ location.date_update | date:'d.m.Y H:i' }}</th>
+                <th>
+                    <a class="btn btn-success text-center" title="Редактировать локацию">
+                        <i class="fas fa-pen"></i>
+                    </a>
+                </th>
             </tr>
             {% endfor %}
     </table>
