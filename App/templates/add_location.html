@@ -43,25 +43,23 @@
                 <span style="width:45px;" class="btn border-secondary bg-light"><i class="fa fa-street-view" aria-hidden="true"></i></span>
                 <span class="btn border-secondary bg-light">
                     Является ли улицей?&nbsp;&nbsp;
-                    <input type="checkbox" class="form-check-input" name="street"  required></span>
+                    <input type="checkbox" class="form-check-input" name="street" checked></span>
             </div>
 
             <div class="input-group mb-3">
                 <span style="width:45px;" class="btn border-secondary bg-light"><i class="fa fa-street-view" aria-hidden="true"></i></span>
                 <span class="btn border-secondary bg-light">
                     Является ли районом?&nbsp;&nbsp;
-                    <input type="checkbox" class="form-check-input" name="dist"  required></span>
+                    <input type="checkbox" class="form-check-input" name="dist" checked></span>
             </div>
 
-
-
-
         </div>
-        </form>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-success mb-3">
+            {% block btn-action %}<i class="fas fa-plus"></i>&nbsp;&nbsp;Добавить {% endblock btn-action %}
+        </button>
       </div>
+    </form>
     </div>
   </div>
 </div>
