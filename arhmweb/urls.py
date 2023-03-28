@@ -5,6 +5,7 @@ from App import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('karta', views.karta, name='karta'),
 
     # Path to ADD Karta
     path('add_location', views.add_location, name='add_location'),

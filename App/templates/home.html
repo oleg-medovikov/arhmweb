@@ -1,53 +1,26 @@
+<title>home</title>
 {% extends 'base.html' %}
 
 <!-- Navbar content -->
 
 {% block navbar-content %}
-&nbsp;&nbsp;<i style="color: yellowgreen;" class="fa fa-map-signs"></i>&nbsp;&nbsp; Карта города Аркхем
+&nbsp;&nbsp;<i style="color: yellowgreen;" class="fa fa-book"></i>&nbsp;&nbsp;
 {% endblock navbar-content %}
-
-
 <!-- Page content -->
 {% block content %}
 <div class="container">
     <br><br><br>
 
-    <table class="table table-bordered" id="karta" style="text-align: center;">
-        <thead class="table-success">
-            <tr>
-                <th>node_id</th>
-                <th>name_node</th>
-                <th>declension</th>
-                <th>contact_list_id</th>
-                <th>district</th>
-                <th>district_id</th>
-                <th>street</th>
-                <th>dist</th>
-                <th>date_update</th>
-                <th>Edit</th>
-            </tr>
-        </thead>
-        <!-- Data from backend -->
-            {% for location in locations %}
-            <tr>
-                <th>{{ location.node_id }}</th>
-                <th>{{ location.name_node }}</th>
-                <th>{{ location.declension }}</th>
-                <th>{{ location.contact_list_id }}</th>
-                <th>{{ location.district }}</th>
-                <th>{{ location.district_id }}</th>
-                <th>{{ location.street }}</th>
-                <th>{{ location.dist }}</th>
-                <th>{{ location.date_update | date:'d.m.Y H:i' }}</th>
-                <th>
-                    <a class="btn btn-success text-center" title="Редактировать локацию">
-                        <i class="fas fa-pen"></i>
-                    </a>
-                </th>
-            </tr>
-            {% endfor %}
-    </table>
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">
+                <a class="nav-link active" aria-current="karta" href="karta">Карта города Аркхэма</a>
+            </span>
+        </div>
+    </nav>
+
 </div> <!-- END // container -->
 
 <br><br><br><br>
 {% endblock content %}
+

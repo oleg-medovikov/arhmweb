@@ -18,37 +18,29 @@
     <!-- Datatables CSS  кнопочки экспорта -->
     <link href="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.css" rel="stylesheet"/>
 
-  <title>Document</title>
+  <title>base</title>
 </head>
 <body>
     <div class='wrapper'>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="col-sm">
-                    <a class="navbar-brand flex-grow-1" style="text-align: center; color: #fff; margin-left: 25px;">
-                        База Знаний Древних
-                        {% block navbar-content %}{% endblock navbar-content %}
-                    </a>
-                </div>
+        <header class="bg-dark">
+            <span class="flex-grow-1 text-white">
+                <a class="nav-link active" style="color: #fff; margin-left: 25px;", aria-current="home" href="/">
+                    База Знаний Древних
+                    {% block navbar-content %}{% endblock navbar-content %}
+                </a>
                 <!-- Перемещаем поиск вверх -->
                 <div class="d-flex" style="margin-right: 25px;">
-                    <div class="input-group input-group-sm">
-                        <!-- кнопочка добавления новой строки -->
-                        <a class="btn btn-success btn-sm" style="width: 40px;" data-bs-toggle="modal" data-bs-target="#addModal">
-                            <i class="fas fa-plus"></i>
-                        </a>
-                        <!-- поле поиска -->
+                    <div class="input-group input-group-sm ms-auto">
+                       <!-- поле поиска -->
                         <input class="form-control" type="search" id="search" placeholder="Попробуй найти..." aria-label="Поиск">
                         <a href="{% url 'home' %}" class="btn btn-secondary btm-sm"><i class="fas fa-sync-alt"></i></a>
                     </div>
-
                 </div>
-            </nav>
+            </span>
         </header>
 
         {% block content %} {% endblock content %}
 
-        {% include 'add_location.html' %}
 
     </div> <!-- END // wrapper -->
         <footer class="bg-dark text-center text-lg-start" id="footer" style="color: #fff">
@@ -81,7 +73,7 @@
             },
             pading: true,
             pageLeght: 10,
-            leghtChange: true,
+            leghtChange: false,
             autoWidth: true,
             searching: true,
             bInfo: true,
@@ -90,7 +82,7 @@
                 "targets": [6,7,8],
                 "orderable": false
             }],
-            dom: 'lBfrtip',
+            dom: 'Bfrtip',
             buttons: [
                 { // кнопка копирования
                 extend: 'copy',
@@ -104,13 +96,13 @@
                 className: 'btn btn-secondary',
                 titleAttr: 'Excel',
                 header: true,
-                filename: 'Karta',
+                filename: 'file',
                 title: '',
                 },
              ]
 
         })
-    // поиск делаем 
+    // поиск делаем
         var newSearch = $("#karta").DataTable();
         $("#search").keyup(function() {
             newSearch.search($(this).val()).draw();

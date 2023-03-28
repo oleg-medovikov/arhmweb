@@ -6,9 +6,13 @@ from json import loads
 from App.models import Location
 
 
-def home(request):
+def karta(request):
     karta = Location.objects.all()
-    return render(request, 'home.html', {"locations": karta})
+    return render(request, 'karta.html', {"locations": karta})
+
+
+def home(request):
+    return render(request, 'home.html')
 
 
 def location(requests):
