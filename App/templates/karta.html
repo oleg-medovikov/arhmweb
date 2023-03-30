@@ -1,10 +1,12 @@
-<title>karta</title>
+
+<title>home</title>
 {% extends 'base.html' %}
 
 <!-- Navbar content -->
 
 {% block navbar-content %}
-&nbsp;&nbsp;<i style="color: yellowgreen;" class="fa fa-map-signs"></i>&nbsp;&nbsp; Карта города Аркхем
+&nbsp;&nbsp;<i style="color: yellowgreen;" class="fa fa-map-signs"></i>&nbsp;&nbsp;
+<span class="d-none d-lg-inline ms-2">Карта города Аркхем</span>
 {% endblock navbar-content %}
 
 
@@ -13,9 +15,9 @@
 <div class="container">
     <br><br><br>
     <!-- кнопочка добавления новой строки -->
-    <a class="btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#addModal">
+    <button class="btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#addModal">
         <i class="fas fa-plus">&nbsp;&nbsp; Добавить локацию</i>
-    </a>
+    </button>
 
     {% include 'add_location.html' %}
 
@@ -35,24 +37,25 @@
                 <th>date_update</th>
                 <th>Edit</th>
             </tr>
-        </thead>
+            </thead>
+
         <!-- Data from backend -->
             {% for location in locations %}
             <tr>
-                <th>{{ location.node_id }}</th>
-                <th>{{ location.name_node }}</th>
-                <th>{{ location.declension }}</th>
-                <th>{{ location.contact_list_id }}</th>
-                <th>{{ location.district }}</th>
-                <th>{{ location.district_id }}</th>
-                <th>{{ location.street }}</th>
-                <th>{{ location.dist }}</th>
-                <th>{{ location.date_update | date:'d.m.Y H:i' }}</th>
-                <th>
+                <td>{{ location.node_id }}</td>
+                <td>{{ location.name_node }}</td>
+                <td>{{ location.declension }}</td>
+                <td>{{ location.contact_list_id }}</td>
+                <td>{{ location.district }}</td>
+                <td>{{ location.district_id }}</td>
+                <td>{{ location.street }}</td>
+                <td>{{ location.dist }}</td>
+                <td>{{ location.date_update | date:'d.m.Y H:i' }}</td>
+                <td>
                     <a class="btn btn-success text-center" title="Редактировать локацию">
                         <i class="fas fa-pen"></i>
                     </a>
-                </th>
+                </td>
             </tr>
             {% endfor %}
     </table>

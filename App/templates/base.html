@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
     <link href={% static "img/octopus.png" %} rel="shortcut icon">
     <!-- Logo -->
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     <!-- Datatables CSS  кнопочки экспорта -->
     <link href="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.css" rel="stylesheet"/>
+    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.4/r-2.4.1/datatables.min.css" rel="stylesheet"/>
 
   <title>base</title>
 </head>
@@ -25,7 +26,7 @@
         <header class="text-white bg-dark py-2">
             <div class="container d-flex">
                 <a class="nav-link active me-auto text-white"  aria-current="home" href="/">
-                    База Знаний Древних
+                    <span class="d-none d-lg-inline me-2">База Знаний Древних</span>
                     {% block navbar-content %}{% endblock navbar-content %}
                 </a>
                 <!-- поле поиска -->
@@ -59,6 +60,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.js"></script>
 
+    <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/r-2.4.1/datatables.min.js"></script>
     <!-- Datatables script -->
     <script>
         $("#karta").DataTable({
@@ -72,6 +74,19 @@
             searching: true,
             bInfo: true,
             bSort: true,
+            responsive: {
+                breakpoints: [
+                      {name: 'bigdesktop', width: Infinity},
+                      {name: 'meddesktop', width: 1480},
+                      {name: 'smalldesktop', width: 1280},
+                      {name: 'medium', width: 1188},
+                      {name: 'tabletl', width: 1024},
+                      {name: 'btwtabllandp', width: 848},
+                      {name: 'tabletp', width: 768},
+                      {name: 'mobilel', width: 480},
+                      {name: 'mobilep', width: 320}
+                    ]
+                  },
             "columnDefs": [{
                 "targets": [6,7,8],
                 "orderable": false
