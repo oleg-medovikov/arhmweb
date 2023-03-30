@@ -40,7 +40,7 @@ def add_location(request):
             Loc.dist = True if request.POST.get('dist') == 'on' else False
             Loc.save()
             messages.success(request, "Локация добавлена!")
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("karta")
 
 
 def edit_location(request):

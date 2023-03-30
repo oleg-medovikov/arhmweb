@@ -13,15 +13,14 @@
 <!-- Page content -->
 {% block content %}
 <div class="container">
-    <br><br><br>
+    <br>
     <!-- кнопочка добавления новой строки -->
-    <button class="btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#addModal">
+    <button class="btn btn-success mb-3"  data-bs-toggle="modal" data-bs-target="#addModal">
         <i class="fas fa-plus">&nbsp;&nbsp; Добавить локацию</i>
     </button>
 
     {% include 'add_location.html' %}
 
-    <br><br><br>
 
     <table class="table table-bordered" id="karta" style="text-align: center;">
         <thead class="table-success">
@@ -60,6 +59,17 @@
             {% endfor %}
     </table>
 </div> <!-- END // container -->
+{% for message in messages %}
+    {% if message.tags == 'success' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{message}}";
+        swal("Замечательно!", m )
+    </script>
+    {% endif %}
+{% endfor %}
+
+
 
 <br><br><br><br>
 {% endblock content %}
