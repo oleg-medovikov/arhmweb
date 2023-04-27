@@ -1,0 +1,28 @@
+{% extends 'add_location.html' %}
+
+<!-- Modal Id -->
+{% block modal-id %} id="editModal{{ location.pk }}" {% endblock modal-id %}
+
+<!-- Modal Title-->
+{% block modal-title %} <i class="fas fa-plus"></i>&nbsp;&nbsp; Редактировать локацию {% endblock modal-title %}
+
+<!-- Modal Action-->
+{% block action %} action="/edit_location" {% endblock action %}
+
+<!-- Modal Action-->
+{% block btn-action %}<i class="fas fa-server"></i>&nbsp;&nbsp; Изменить {% endblock btn-action %}
+
+<!-- Inputs -->
+
+{% block Value-node_id %}
+  <div class="input-group mb-3">
+      <span  style="width:45px;" class="btn border-secondary bg-light"><i class="fas fa-key" aria-hidden="true"></i></span>
+      <input type="text" class="form-control" name="node_id" maxlenght="50" value="{{ location.node_id }}" placeholder="id локации" readonly>
+  </div>
+{% endblock Value-node_id %}
+
+{% block Value-name_node %} value="{{ location.name_node }}" {% endblock Value-name_node %}
+{% block Value-declension %} value="{{ location.declension }}" {% endblock Value-declension %}
+{% block Value-contact_list_id %} value="{{ location.contact_list_id }}" {% endblock Value-contact_list_id %}
+{% block Value-district %} value="{{ location.district }}" {% endblock Value-district %}
+{% block Value-district_id %} value="{{ location.district_id }}" {% endblock Value-district_id %}

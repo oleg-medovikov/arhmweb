@@ -15,42 +15,55 @@
 
             <div class="input-group mb-3">
                 <span  style="width:45px;" class="btn border-secondary bg-light"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="name_node" maxlenght="50" placeholder="Название локации" required>
+                <input type="text" class="form-control" name="name_node" maxlenght="50" placeholder="Название локации"
+                required {% block Value-name_node %} {% endblock Value-name_node %}>
             </div>
 
             <div class="input-group mb-3">
                 <span style="width:45px;" class="btn border-secondary bg-light"><i class="fa fa-map-pin" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="declension" maxlenght="50" placeholder="название места поблизости" required>
+                <input type="text" class="form-control" name="declension" maxlenght="50" placeholder="название места поблизости"
+                required {% block Value-declension %} {% endblock Value-declension %} >
             </div>
 
 
             <div class="input-group mb-3">
                 <span style="width:45px;" class="btn border-secondary bg-light"><i class="fa fa-map-signs" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="contact_list_id" maxlenght="50" placeholder="ID локаций поблизости" required>
+                <input type="text" class="form-control" name="contact_list_id" maxlenght="50" placeholder="ID локаций поблизости"
+                required {% block Value-contact_list_id %} {% endblock Value-contact_list_id %}>
             </div>
 
             <div class="input-group mb-3">
                 <span style="width:45px;" class="btn border-secondary bg-light"><i class="fa fa-map" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="district" maxlenght="50" placeholder="Район" required>
+                <input type="text" class="form-control" name="district" maxlenght="50" placeholder="Район"
+                required {% block Value-district %} {% endblock Value-district %} >
             </div>
 
             <div class="input-group mb-3">
                 <span style="width:45px;" class="btn border-secondary bg-light"><i class="fa fa-map" aria-hidden="true"></i></span>
-                <input type="number" class="form-control" name="district_id"  placeholder="Код района" required>
+                <input type="number" class="form-control" name="district_id"  placeholder="Код района"
+                required {% block Value-district_id %} {% endblock Value-district_id %}>
             </div>
 
             <div class="input-group mb-3">
                 <span style="width:45px;" class="btn border-secondary bg-light"><i class="fa fa-street-view" aria-hidden="true"></i></span>
-                <span class="btn border-secondary bg-light">
-                    Является ли улицей?&nbsp;&nbsp;
-                    <input type="checkbox" class="form-check-input" name="street" checked></span>
+                    <select class="form-select" name="street" required>
+                        {% block option_street %}
+                        <option value="" hidden>Является ли улицей?</option>
+                        {% endblock option_street %}
+                        <option>True</option>
+                        <option>False</option>
+                    </select>
             </div>
 
             <div class="input-group mb-3">
                 <span style="width:45px;" class="btn border-secondary bg-light"><i class="fa fa-street-view" aria-hidden="true"></i></span>
-                <span class="btn border-secondary bg-light">
-                    Является ли районом?&nbsp;&nbsp;
-                    <input type="checkbox" class="form-check-input" name="dist" checked></span>
+                    <select class="form-select" name="dist" required>
+                        {% block option_dist %}
+                        <option value="" hidden>Является ли районом?</option>
+                        {% endblock option_dist %}
+                        <option>True</option>
+                        <option>False</option>
+                    </select>
             </div>
 
         </div>

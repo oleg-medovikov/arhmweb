@@ -53,3 +53,31 @@ body {
     margin-bottom: 10px !important;
 }
 
+ /* CUSTOM sweetmessage */
+.swal-modal {
+    background-color: rgba(0,0,0,0.651);
+    color: #fff;
+}
+.swal-title {
+    color: #fff;
+    font-size: 20px;
+}
+.swal-text{
+    color: #fff;
+    font-size: 15px;
+}
+.swal-button{
+    padding: 7px 19px;
+    border-radius: 5px;
+    background-color: #198754;
+    font-size: 12px;
+    border: 1px solid #198754;
+}
+.swal-button:focus{
+    box-shadow: none;
+}
+.swal-button:not([disabled]):hover{
+    background: transparent;
+    color: #fff;
+    border: 1px solid #198754;
+}

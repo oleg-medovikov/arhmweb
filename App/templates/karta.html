@@ -40,6 +40,7 @@
 
         <!-- Data from backend -->
             {% for location in locations %}
+              {% include 'edit_location.html' %}
             <tr>
                 <td>{{ location.node_id }}</td>
                 <td>{{ location.name_node }}</td>
@@ -51,14 +52,16 @@
                 <td>{{ location.dist }}</td>
                 <td>{{ location.date_update | date:'d.m.Y H:i' }}</td>
                 <td>
-                    <a class="btn btn-success text-center" title="Редактировать локацию">
+                  <a class="btn btn-success text-center" title="Редактировать локацию" data-bs-toggle="modal" data-bs-target="#editModal{{ location.pk }}">
                         <i class="fas fa-pen"></i>
                     </a>
                 </td>
             </tr>
             {% endfor %}
     </table>
-</div> <!-- END // container -->
+</div>
+<!-- END // container -->
+
 {% for message in messages %}
     {% if message.tags == 'success' %}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
