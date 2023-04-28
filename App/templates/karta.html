@@ -1,5 +1,4 @@
-
-<title>home</title>
+<title>karta</title>
 {% extends 'base.html' %}
 
 <!-- Navbar content -->
@@ -76,3 +75,59 @@
 
 <br><br><br><br>
 {% endblock content %}
+    <!-- Datatables script -->
+    <script>
+        $("#karta").DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/ru.json',
+            },
+            pading: true,
+            pageLeght: 10,
+            leghtChange: false,
+            autoWidth: true,
+            searching: true,
+            bInfo: true,
+            bSort: true,
+            order: [],
+            responsive: {
+                breakpoints: [
+                      {name: 'bigdesktop', width: Infinity},
+                      {name: 'meddesktop', width: 1480},
+                      {name: 'smalldesktop', width: 1280},
+                      {name: 'medium', width: 1188},
+                      {name: 'tabletl', width: 1024},
+                      {name: 'btwtabllandp', width: 848},
+                      {name: 'tabletp', width: 768},
+                      {name: 'mobilel', width: 480},
+                      {name: 'mobilep', width: 320}
+                    ]
+                  },
+            "columnDefs": [{
+                "targets": [6,7,8],
+                "orderable": false
+            }],
+            dom: 'Bfrtip',
+            buttons: [
+                { // кнопка копирования
+                extend: 'copy',
+                text: '<i class="fas fa-clone"></i>',
+                className: 'btn btn-secondary',
+                titleAttr: 'Copy',
+                },
+                { // кнопка выгрузки в excel
+                extend: 'excel',
+                text: '<i class="fas fa-file-excel"></i>',
+                className: 'btn btn-secondary',
+                titleAttr: 'Excel',
+                header: true,
+                filename: 'file',
+                title: '',
+                },
+             ]
+        })
+    // поиск делаем
+        var newSearch = $("#karta").DataTable();
+        $("#search").keyup(function() {
+            newSearch.search($(this).val()).draw();
+        })
+    </script>
