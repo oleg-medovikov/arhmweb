@@ -1,0 +1,133 @@
+<title>events</title>
+{% extends 'base.html' %}
+
+<!-- Navbar content -->
+
+{% block navbar-content %}
+&nbsp;&nbsp;<i style="color: yellowgreen;" class="fa fa-map-signs"></i>&nbsp;&nbsp;
+<span class="d-none d-lg-inline ms-2">События в городе Аркхем</span>
+{% endblock navbar-content %}
+
+
+<!-- Page content -->
+{% block content %}
+<div class="container">
+    <br>
+    <!-- кнопочка добавления новой строки -->
+    <button class="btn btn-success mb-3"  data-bs-toggle="modal" data-bs-target="#addModal">
+        <i class="fas fa-plus">&nbsp;&nbsp; Добавить событие</i>
+    </button>
+
+    {% include 'add_event.html' %}
+
+
+    <table class="table table-bordered" id="karta" style="text-align: center;">
+        <thead class="table-success">
+            <tr>
+                <th>node_id</th>
+                <th>name_node</th>
+                <th>declension</th>
+                <th>contact_list_id</th>
+                <th>district</th>
+                <th>district_id</th>
+                <th>street</th>
+                <th>dist</th>
+                <th>date_update</th>
+                <th>Edit</th>
+            </tr>
+            </thead>
+
+        <!-- Data from backend -->
+            {% for location in locations %}
+              {% include 'edit_location.html' %}
+            <tr>
+                <td>{{ location.node_id }}</td>
+                <td>{{ location.name_node }}</td>
+                <td>{{ location.declension }}</td>
+                <td>{{ location.contact_list_id }}</td>
+                <td>{{ location.district }}</td>
+                <td>{{ location.district_id }}</td>
+                <td>{{ location.street }}</td>
+                <td>{{ location.dist }}</td>
+                <td>{{ location.date_update | date:'d.m.Y H:i' }}</td>
+                <td>
+                  <a class="btn btn-success text-center" title="Редактировать локацию" data-bs-toggle="modal" data-bs-target="#editModal{{ location.pk }}">
+                        <i class="fas fa-pen"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+</div>
+<!-- END // container -->
+
+{% for message in messages %}
+    {% if message.tags == 'success' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{message}}";
+        swal("Замечательно!", m )
+    </script>
+    {% endif %}
+{% endfor %}
+
+
+
+<br><br><br><br>
+{% endblock content %}
+    <!-- Datatables script -->
+    <script>
+        $("#karta").DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/ru.json',
+            },
+            pading: true,
+            pageLeght: 10,
+            leghtChange: false,
+            autoWidth: true,
+            searching: true,
+            bInfo: true,
+            bSort: true,
+            order: [],
+            responsive: {
+                breakpoints: [
+                      {name: 'bigdesktop', width: Infinity},
+                      {name: 'meddesktop', width: 1480},
+                      {name: 'smalldesktop', width: 1280},
+                      {name: 'medium', width: 1188},
+                      {name: 'tabletl', width: 1024},
+                      {name: 'btwtabllandp', width: 848},
+                      {name: 'tabletp', width: 768},
+                      {name: 'mobilel', width: 480},
+                      {name: 'mobilep', width: 320}
+                    ]
+                  },
+            "columnDefs": [{
+                "targets": [6,7,8],
+                "orderable": false
+            }],
+            dom: 'Bfrtip',
+            buttons: [
+                { // кнопка копирования
+                extend: 'copy',
+                text: '<i class="fas fa-clone"></i>',
+                className: 'btn btn-secondary',
+                titleAttr: 'Copy',
+                },
+                { // кнопка выгрузки в excel
+                extend: 'excel',
+                text: '<i class="fas fa-file-excel"></i>',
+                className: 'btn btn-secondary',
+                titleAttr: 'Excel',
+                header: true,
+                filename: 'file',
+                title: '',
+                },
+             ]
+        })
+    // поиск делаем
+        var newSearch = $("#karta").DataTable();
+        $("#search").keyup(function() {
+            newSearch.search($(this).val()).draw();
+        })
+    </script>
