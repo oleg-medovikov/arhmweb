@@ -2,16 +2,6 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField
 
 
-class Employee(models.Model):
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
-    occupation = models.CharField(max_length=100)
-
-    class Meta:
-        app_label = 'arhem_data'
-
-
 class Location(models.Model):
     node_id = models.IntegerField(primary_key=True)
     name_node = models.CharField(max_length=50)
