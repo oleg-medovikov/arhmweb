@@ -11,10 +11,6 @@ def karta(request):
     return render(request, 'karta.html', {"locations": karta})
 
 
-def home(request):
-    return render(request, 'home.html')
-
-
 def location(request, node_id):
     location = Location.objects.get(node_id=node_id)
     if location is not None:
