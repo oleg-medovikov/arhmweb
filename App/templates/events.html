@@ -20,38 +20,51 @@
 
     {% include 'add_event.html' %}
 
-
     <table class="table table-bordered" id="karta" style="text-align: center;">
         <thead class="table-success">
             <tr>
+                <th>e_id</th>
+                <th>e_name</th>
+                <th>single</th>
+                <th>active</th>
+                <th>stage</th>
                 <th>node_id</th>
-                <th>name_node</th>
-                <th>declension</th>
-                <th>contact_list_id</th>
-                <th>district</th>
-                <th>district_id</th>
-                <th>street</th>
-                <th>dist</th>
+                <th>profession</th>
+                <th>demand</th>
+                <th>description</th>
+                <th>mess_prize</th>
+                <th>mess_punishment</th>
+                <th>check</th>
+                <th>choice</th>
+                <th>prize</th>
+                <th>punishment</th>
                 <th>date_update</th>
                 <th>Edit</th>
             </tr>
             </thead>
 
         <!-- Data from backend -->
-            {% for location in locations %}
-              {% include 'edit_location.html' %}
+            {% for event in events %}
+              {% include 'edit_event.html' %}
             <tr>
-                <td>{{ location.node_id }}</td>
-                <td>{{ location.name_node }}</td>
-                <td>{{ location.declension }}</td>
-                <td>{{ location.contact_list_id }}</td>
-                <td>{{ location.district }}</td>
-                <td>{{ location.district_id }}</td>
-                <td>{{ location.street }}</td>
-                <td>{{ location.dist }}</td>
-                <td>{{ location.date_update | date:'d.m.Y H:i' }}</td>
+                <td>{{ event.e_id }}</td>
+                <td>{{ event.e_name }}</td>
+                <td>{{ event.single }}</td>
+                <td>{{ event.active }}</td>
+                <td>{{ event.stage }}</td>
+                <td>{{ event.node_id }}</td>
+                <td>{{ event.profession }}</td>
+                <td>{{ event.demand }}</td>
+                <td>{{ event.description }}</td>
+                <td>{{ event.mess_prize }}</td>
+                <td>{{ event.mess_punishment }}</td>
+                <td>{{ event.check }}</td>
+                <td>{{ event.choice }}</td>
+                <td>{{ event.prize }}</td>
+                <td>{{ event.punisment }}</td>
+                <td>{{ event.date_update | date:'d.m.Y H:i' }}</td>
                 <td>
-                  <a class="btn btn-success text-center" title="Редактировать локацию" data-bs-toggle="modal" data-bs-target="#editModal{{ location.pk }}">
+                  <a class="btn btn-success text-center" title="Редактировать событие" data-bs-toggle="modal" data-bs-target="#editModal{{ event.pk }}">
                         <i class="fas fa-pen"></i>
                     </a>
                 </td>
@@ -77,7 +90,7 @@
 {% endblock content %}
     <!-- Datatables script -->
     <script>
-        $("#karta").DataTable({
+        $("#events").DataTable({
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/ru.json',
             },
@@ -103,7 +116,7 @@
                     ]
                   },
             "columnDefs": [{
-                "targets": [6,7,8],
+                "targets": [],
                 "orderable": false
             }],
             dom: 'Bfrtip',
@@ -126,7 +139,7 @@
              ]
         })
     // поиск делаем
-        var newSearch = $("#karta").DataTable();
+        var newSearch = $("#events").DataTable();
         $("#search").keyup(function() {
             newSearch.search($(this).val()).draw();
         })
